@@ -1,0 +1,38 @@
+<h3>Your purchases</h3>
+
+<div fxLayoutAlign="center" fxLayout="row">
+    <table class="zui-table">
+      <thead>
+          <tr>
+              <th>Coin</th>
+              <th>Amount</th>
+              <th>Price</th>
+
+          </tr>
+      </thead>
+      <tbody *ngIf="(peopl$)?.length >= 0; else noperson">
+        <tr *ngFor="let p of peopl$ ">
+          <td>{{ p.coin }}</td>
+          <td>{{ p.amount }}</td>
+          <td> $ {{ p.price }}</td>
+        </tr>
+
+        <ng-template #noperson>
+            <p>No purchase found!</p>
+          </ng-template>
+      </tbody>
+    </table>
+  </div>
+
+
+
+<!--
+<div *ngIf="(peopl$)?.length >= 0; else noperson">
+  <ul>
+    <li *ngFor="let p of peopl$ ">{{ p.coin }} - {{ p.amount }} -  {{ p.price }}</li>
+  </ul>
+</div>
+
+<ng-template #noperson>
+  <p>No person found!</p>
+</ng-template> -->

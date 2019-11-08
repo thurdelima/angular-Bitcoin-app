@@ -1,0 +1,55 @@
+<h3>Bitcoins</h3>
+<div fxLayoutAlign="center" fxLayout="row">
+  <table class="zui-table">
+    <thead>
+        <tr>
+            <th>Coin</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Buy</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="(bitcoins$ | async)?.length > 0; else noproduct">
+      <tr *ngFor="let p of bitcoins$ | async">
+        <td>{{ p.coin }}</td>
+        <td>{{ p.amount }}</td>
+        <td> $ {{ p.price }}</td>
+        <td>
+            <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="buyBitcoin($event, p.price, p)"
+              >
+                Buy
+          </button>
+        </td>
+      </tr>
+
+      <ng-template #noproduct>
+          <p>No bitcoin found!</p>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
+<!-- <div *ngIf="(bitcoins$ | async)?.length > 0; else noproduct">
+  <ul>
+    <li *ngFor="let p of bitcoins$ | async">
+      {{ p.coin }} - {{ p.amount }} -  {{ p.price }}
+      <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="buyBitcoin($event, p.price, p)"
+            >
+              Buy
+        </button>
+    </li>
+
+  </ul>
+</div> -->
+
+
+
+
+
